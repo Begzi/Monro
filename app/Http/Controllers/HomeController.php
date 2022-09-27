@@ -26,11 +26,9 @@ class HomeController extends Controller
             'URL.min' => 'Не может быть ссылка меньше 5 символов',
         ];
         $validator = Validator::make($request->all(), $rules, $messages)->validate();
-        // $pdf =  file_get_contents($request['URL']);
-        // dd($pdf);
-        $file_full_path = 'public/'; // Соответствует storage/app/public/
-        $file_name = 'file.pdf';
-        Storage::disk('local')->put($file_full_path  . $file_name, file_get_contents($request['URL']), 'public'); 
+        // $file_full_path = 'public/'; // Соответствует storage/app/public/
+        // $file_name = 'file.pdf';
+        // Storage::disk('local')->put($file_full_path  . $file_name, file_get_contents($request['URL']), 'public'); 
 
 
 
@@ -41,12 +39,12 @@ class HomeController extends Controller
         // https://psv4.userapi.com/c235031/u137607046/docs/d29/8132de26a41b/resume_Begzi_Echis.pdf?extra=KpXrIVrrflKUCT4NZ2S3EZJvo0TuBjMi36uh3bj-EjRlOi2GqNmIEMI-x9TOQlKbD-lgClxs2dZAIhXYeMotY51vdbSYcs2NvqlbEkdkyd1mghbFL6wMmKFBUvaY285F9Keu7eDG-eJyLObt
         // https://psv4.userapi.com/c235031/u137607046/docs/d59/116f7f647def/file2.pdf?extra=_xZUUOeVsBgchxu00vHj1Ay7JRnzbTIPlvGQtAgQ2Kuc5h0RcdnzC07nA9CX808QrwMEfJ7UljEqONIlRAGIP2X3j5UGGfK8PBSoxbeNyfOlf79BnjpLAwro5-DpCa6C8cJGHkqzXs7KL6jH
         // https://psv4.userapi.com/c235031/u137607046/docs/d22/f7b70679baf0/file3.pdf?extra=L2sj6lESOc-9J_1q717FXu7Yts28h08Md7gcM-UHdwrbij6sqloEqFiGRHkagSBWeat5Hclb2hK12YIha4x1uJMi-iTLC9QTTKXpdzg4T_lClPVUs6VUipePyNrryi78Bnrr8IVn06sZW7xI
-        $file_full_path = 'public/'; // Соответствует storage/app/public/
-        $file_name = 'file.html';
-        Storage::disk('local')->put($file_full_path  . $file_name, file_get_contents($result->getFile()), 'public'); 
+        // $file_full_path = 'public/'; // Соответствует storage/app/public/
+        // $file_name = 'file.html';
+        // Storage::disk('local')->put($file_full_path  . $file_name, file_get_contents($result->getFile()), 'public'); 
 
 
-        $html = file_get_contents(asset('/storage/file.html'), "r");
+        $html = file_get_contents(($result->getFile()), "r");
         $text = substr($html, strpos($html, '<h1></h1>') + 11, strlen($html));
 
         $array_text = explode("\r\n", $text);

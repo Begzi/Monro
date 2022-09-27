@@ -14,7 +14,4 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/asd', function(){
-    return view('asd');
-});
 Route::post('/parse', [HomeController::class, 'parse'])->name('parse');
